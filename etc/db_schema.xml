@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2022 HP. All rights reserved.
+*/
+-->
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <!-- hp_megamenu-->
+    <table name="hp_megamenu" resource="default" engine="innodb" comment="hp_megamenu">
+        <column xsi:type="int" name="menu_id" unsigned="true" nullable="false" padding="10" identity="true" comment="MenuId"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Title"/>
+        <column xsi:type="varchar" name="image" nullable="true" length="255" comment="Image"/>
+        <column xsi:type="varchar" name="link" nullable="true" length="255" comment="Link"/>
+        <column xsi:type="int" name="parent_id" comment="Parent Menu" identity="false"  nullable="true" unsigned="false" />
+        <column xsi:type="varchar" name="position" nullable="false" length="255" comment="Menu Postion"  />
+        <column xsi:type="varchar" name="menu_type" nullable="false" length="255" comment="Menu Type"/>
+        <column xsi:type="boolean" name="status" nullable="false"  comment="Menu Status" default="1"/>
+        <column xsi:type="boolean" name="is_new_tab" nullable="true"  comment="Is NewTab" default="0"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="menu_id"/>
+        </constraint>
+        <index referenceId="FTI_ARIZE_HP_MEGAMENU" indexType="fulltext">
+            <column name="title"/>
+        </index>
+    </table>
+</schema>
